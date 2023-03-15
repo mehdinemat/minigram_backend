@@ -9,6 +9,7 @@ const app = express()
 const cloudinary = require('cloudinary')
 const {PeerServer} = require('peer')
 
+const User = require('./models/userModels')
 
 const AuthRoute = require('./routes/authRoute')
 const UserRoute = require('./routes/userRoute')
@@ -36,8 +37,9 @@ io.on('connection' , socket=>{
 })
 
 PeerServer({port:'5001' , path:'/'})
-app.use('/api/test' , (req,res)=>{
-    return res.json('khobi?')
+app.use('/api/test' , async(req,res)=>{
+    const ss = await User.findById('63edf1157a0fb4f1d7c71b4f')
+    res.json(ss)
 })
 app.use('/api' , AuthRoute)
 app.use('/api' , UserRoute)
