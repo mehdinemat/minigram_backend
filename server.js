@@ -39,6 +39,7 @@ io.on('connection' , socket=>{
 PeerServer({port:'5001' , path:'/'})
 app.use('/api/test' , async(req,res)=>{
     const ss = await User.findById('63edf1157a0fb4f1d7c71b4f')
+    console.log(ss)
     res.json(process.env.MONGO_URL)
 })
 app.use('/api' , AuthRoute)
