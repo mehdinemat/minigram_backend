@@ -37,7 +37,7 @@ io.on('connection' , socket=>{
 
 PeerServer({port:'5001' , path:'/'})
 app.use('/api/test' , (req,res)=>{
-    return res.json('salam')
+    return res.json('khobi?')
 })
 app.use('/api' , AuthRoute)
 app.use('/api' , UserRoute)
