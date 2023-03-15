@@ -1,0 +1,11 @@
+const express = require('express')
+const router = express.Router()
+const auth = require('../middleware/auth')
+const userController  = require('../controllers/userController')
+    router.get('/search' , userController.searchUser)
+    router.get('/user/:id' , userController.getUser)
+    router.patch('/user' , auth  , userController.updateUser)
+    router.patch('/user/:id/follow' , auth , userController.follow )
+    router.patch('/user/:id/unfollow' , auth , userController.unfollow )
+    router.get('/profilepost/:id' , auth , userController.getProfilePost)
+module.exports = router
