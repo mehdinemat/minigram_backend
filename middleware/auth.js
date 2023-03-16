@@ -3,13 +3,11 @@ const jwt = require('jsonwebtoken')
 const auth =async (req,res , next)=>{
 
     try{
-        console.log(req.get('Authorization'))
-        const token = req.headers['Authorization']
-        console.log(req.headers , 'this is token authen')
+        const token = req.header('Authorization')
+        
         if(!token){
             return res.status(400).json({error:"Invalid Authentication"})
         }
-        console.log(process.env.SECRET_CREATE_CODE)
         const decode = jwt.verify(token , process.env.SECRET_CREATE_CODE)
         if(!decode) {
             return res.status(400).json({error:"Invalid Authentication"})
