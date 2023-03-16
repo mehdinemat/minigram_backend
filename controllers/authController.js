@@ -110,7 +110,7 @@ const userAuth = {
                 res.status(400).json({msg:"user not found"})
             }
             const accessToken = createAccessToken({id:user._id})
-
+            
             res.status(200).json({
                 accessToken , user
             })
