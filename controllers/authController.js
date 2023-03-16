@@ -73,6 +73,7 @@ const userAuth = {
             path: '/api/refresh_token',
             maxAge: 30*24*60*60*1000
         })
+        console.log(req.cookies)
       
        return res.json({msg:'login success' , accessToken , user:{
             ...user._doc,password:''
@@ -93,7 +94,7 @@ const userAuth = {
     },generateAccessToken:async(req,res)=>{
         
         try{
-            console.log(req)
+            
             const token = req.cookies.refreshToken
             console.log(token , 'step one')
          if(!token){return res.status(400).json({msg:"Please login now."})}
