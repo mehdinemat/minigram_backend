@@ -5,7 +5,7 @@ const router = express.Router()
 
 
     router.route('/posts').post(auth,usersPost.createPost ).get(auth,usersPost.getPost)
-    router.get('/suggestion/:id' , auth , usersPost.getSuggestion)
+    router.get('/suggestion/:id', usersPost.getSuggestion)
     router.delete('/posts/:id' , auth , usersPost.deletePost)
     router.patch('/post/:id' , auth , usersPost.updatePost)
     router.get('/post/:id' , auth , usersPost.getDetailPost)
