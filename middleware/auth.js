@@ -1,14 +1,14 @@
 const User= require('../models/userModels')
 const jwt = require('jsonwebtoken')
-const { json } = require('express')
 const auth =async (req,res , next)=>{
 
     try{
         const token = req.header('Authorization')
-
+        console.log(token , 'this is token authen')
         if(!token){
             return res.status(400).json({error:"Invalid Authentication"})
         }
+        console.log(process.env.SECRET_CREATE_CODE)
         const decode = jwt.verify(token , process.env.SECRET_CREATE_CODE)
         if(!decode) {
             return res.status(400).json({error:"Invalid Authentication"})
