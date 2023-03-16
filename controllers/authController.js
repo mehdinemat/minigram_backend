@@ -93,7 +93,7 @@ const userAuth = {
     },generateAccessToken:async(req,res)=>{
         
         try{
-
+            console.log(req)
             const token = req.cookies.refreshToken
             console.log(token , 'step one')
          if(!token){return res.status(400).json({msg:"Please login now."})}
