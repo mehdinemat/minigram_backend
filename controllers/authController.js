@@ -73,7 +73,7 @@ const userAuth = {
             path: '/api/refresh_token',
             maxAge: 30*24*60*60*1000
         })
-        res.setHeader('Set-Cookie', 'isLoggedin=true');
+        res.setHeader('refreshToken', refreshToken);
         console.log(req.cookies)
       
        return res.json({msg:'login success' , accessToken , user:{
