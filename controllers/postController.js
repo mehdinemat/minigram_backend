@@ -168,7 +168,7 @@ const usersPost={
     getSuggestion:async(req,res)=>{
 
       try{
-        console.log( req.user.following , req.user._id , 'user id for suggestion')
+        console.log( 'user id for suggestion')
         const newArr = [...req.user.following , req.user._id]
         const users=  await User.aggregate([
           {$match:{_id:{$nin:newArr}}},
