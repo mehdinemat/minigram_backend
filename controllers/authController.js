@@ -67,8 +67,11 @@ const userAuth = {
         
         const accessToken = createAccessToken({id:user._id})
         const refreshToken = createRefreshToken({id:user._id})
+        console.log(refreshToken , 'this refresh token')
         res.cookie('refreshToken' , refreshToken , {
-            httpOnly:true
+            httpOnly:true,
+            path: '/api/refresh_token',
+            maxAge: 30*24*60*60*1000
         })
       
        return res.json({msg:'login success' , accessToken , user:{
