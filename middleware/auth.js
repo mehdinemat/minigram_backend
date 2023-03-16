@@ -4,7 +4,7 @@ const auth =async (req,res , next)=>{
 
     try{
         const token = req.header('Authorization')
-        
+        console.log(token)
         if(!token){
             return res.status(400).json({error:"Invalid Authentication"})
         }
@@ -13,6 +13,7 @@ const auth =async (req,res , next)=>{
             return res.status(400).json({error:"Invalid Authentication"})
         }
         const user = await User.findOne({_id:decode.id})
+        console.log(user , 'user auth')
         req.user = user
         next()
 

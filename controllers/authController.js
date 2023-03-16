@@ -74,7 +74,6 @@ const userAuth = {
             maxAge: 30*24*60*60*1000
         })
         res.setHeader('refreshToken', refreshToken);
-        console.log(req.cookies)
       
        return res.json({msg:'login success' , accessToken , user:{
             ...user._doc,password:''
@@ -97,20 +96,17 @@ const userAuth = {
         try{
             
             const token = req.cookies.refreshToken
-            console.log(token , 'step one')
          if(!token){return res.status(400).json({msg:"Please login now."})}
 
         jwt.verify(token , process.env.SECRET_REFRESH_CODE , async(err,result)=>{
 
             if(err){ return res.status(400).json({msg: "Please login now."})}
-            console.log(result.id)
             const user = await User.findOne({_id:result.id}).populate("following followers saved" , "-password")
-            console.log(user)
             if(!user){
                 res.status(400).json({msg:"user not found"})
             }
             const accessToken = createAccessToken({id:user._id})
-            
+
             res.status(200).json({
                 accessToken , user
             })
