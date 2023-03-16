@@ -5,7 +5,7 @@ const auth =async (req,res , next)=>{
     try{
         console.log(req.get('Authorization'))
         const token = req.header('Authorization')
-        console.log(token , 'this is token authen')
+        console.log(req.header , 'this is token authen')
         if(!token){
             return res.status(400).json({error:"Invalid Authentication"})
         }
